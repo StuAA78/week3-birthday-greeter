@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Birthday Greeter</title>
+  </head>
+  <body>
+    <h1>Your birthday is <%= "#{@birthday.day}/#{@birthday.month}/#{@birthday.year}" %></h1>
+    <h1>Today's date is <%= "#{@today.day}/#{@today.month}/#{@birthday.year}" %></h1>
+    <h1>You are <%= @diff %> days old 😬</h1>
+    <% if @this_year_diff > 0 %>
+    <h1>Your birthday was <%= "#{@this_year_diff} #{@day_days}" %> ago</h1>
+    <% elsif @this_year_diff < 0 %>
+    <h1>Your birthday is in <%= "#{@this_year_diff.abs} #{@day_days}" %></h1>
+    <% else %>
+    <h1>It's your birthday today! 🎂</h1>
+    <% end %>
+  </body>
+</html>
