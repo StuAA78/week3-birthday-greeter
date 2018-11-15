@@ -5,15 +5,16 @@
     <title>Birthday Greeter</title>
   </head>
   <body>
-    <h1>Your birthday is <%= "#{@birthday.day}/#{@birthday.month}/#{@birthday.year}" %></h1>
-    <h1>Today's date is <%= "#{@today.day}/#{@today.month}/#{@birthday.year}" %></h1>
-    <h1>You are <%= @diff %> days old 😬</h1>
+    <p>Your birthday is <%= @birthday.date.strftime(@date_format) %></p>
+    <p>Today's date is <%= @today.strftime(@date_format) %></p>
+    <p>You are <%= @diff %> days old 😬</p>
     <% if @this_year_diff > 0 %>
-    <h1>Your birthday was <%= "#{@this_year_diff} #{@day_days}" %> ago</h1>
+    <p>Your birthday was <%= "#{@this_year_diff} #{@day_days}" %> ago</p>
     <% elsif @this_year_diff < 0 %>
-    <h1>Your birthday is in <%= "#{@this_year_diff.abs} #{@day_days}" %></h1>
+    <p>Your birthday is in <%= "#{@this_year_diff.abs} #{@day_days}" %></p>
     <% else %>
-    <h1>It's your birthday today! 🎂</h1>
+    <p>It's your birthday today! 🎂</p>
     <% end %>
+    <p><a href="<%= @wiki_link %>">Click here for info from Wikipedia on your birthday!</a></p>
   </body>
 </html>

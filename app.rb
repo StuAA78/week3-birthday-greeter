@@ -14,19 +14,19 @@ class BirthdayGreeter < Sinatra::Base
 
   post '/birthday' do
     session[:birthday] = Birthday.new(params["birthday"])
-    session[:diff] = session[:birthday].difference(Date.today)
-    session[:this_year_diff] = session[:birthday].this_year_difference(Date.today)
 
     redirect '/birthday'
   end
 
   get '/birthday' do
-
     @birthday = session[:birthday]
     @today = Date.today
-    @diff = session[:diff]
-    @this_year_diff = session[:this_year_diff]
+    @diff = @birthday.difference(@today)
+    @this_year_diff = @birthday.this_year_difference(@today)
     @day_days = @birthday.day_days
+    @text_date = @birthday.date.strftime("%B %-d").gsub(" ", "_")
+    @wiki_link = "https://en.wikipedia.org/wiki/#{@text_date}"
+    @date_format = "%A %d %B %Y"
 
     erb :birthday
   end
